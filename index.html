@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta>
+	<title>Zhang Ling's Site</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="Zhang Ling,html,css,js,node,前端,后端,数据库">
+	<meta name="description" content="Zhang Ling's site">
+	<meta name="author" content="Zhang Ling">
+	<link rel="shortcut icon" href="/static/img/favicon.ico">
+
+	<link rel="stylesheet" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css">
+	<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_qgg7x4gx9ml07ldi.css">
+	<link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+	<section class="contain">
+		<!-- <a href="http://resume.qmail.com/zhangling.rd/lC65gq2DjSM" class="photo animated zoomIn" title="About me"></a> -->
+		<a href="javascript:;" class="photo animated zoomIn" title="About me"></a>
+
+		<div class="links animated fadeInDown" style="animation-delay: .4s;">
+			<a href="http://github.com/zhanglingrd">
+				<i class="iconfont icon-github"></i>
+			</a>
+			<a href="javascript:;">
+				<i class="iconfont icon-wechat"></i>
+				<img src="/static/img/qr_wechat.jpg" alt="">
+			</a>
+			<a href="http://weibo.com/5565541266">
+				<i class="iconfont icon-weibo"></i>
+			</a>
+			<!-- <a href="http://twitter.com/zhanglingrd">
+				<i class="iconfont icon-twitter"></i>
+			</a>
+			<a href="http://github.com/zhanglingrd">
+				<i class="iconfont icon-qq"></i>
+			</a> -->
+		</div>
+
+		<p class="about animated fadeInDown" style="animation-delay: .8s;">Zhang Ling,&nbsp;&nbsp;Web Developer</p>
+
+		<div class="menu">
+			<a href="http://www.jianshu.com/u/539a1124c845" class="animated fadeInDown" style="animation-delay: 1.2s;">文章</a>
+			<a href="/docs" class="animated fadeInDown" style="animation-delay: 1.4s;">笔记</a>
+			<a href="http://www.jianshu.com/nb/13461687" class="animated fadeInDown" style="animation-delay: 1.6s;">翻译</a>
+			<!-- <a href="/docs" class="animated fadeInDown" style="animation-delay: 1.8s;">书籍</a> -->
+			<a href="http://zhangling.site/vue-mui" class="animated fadeInDown" style="animation-delay: 2s;">VUE-MUI</a>
+			<!-- <a href="http://resume.qmail.com/zhangling.rd/lC65gq2DjSM" class="animated fadeInDown" style="animation-delay: 2.2s;">关于我</a> -->
+			<a href="javascript:alert('无访问权限！');" class="animated fadeInDown" style="animation-delay: 2.2s;">关于我</a>
+			<a href="/tpls/share" class="animated fadeInDown" style="animation-delay: 2.4s;">读书分享</a>
+		</div>
+	</section>
+
+	<script>
+		// menu 跳动动画
+		var $a = document.querySelectorAll('.menu a')
+
+		setInterval(function() {
+			$a.forEach(function(item,  index) {
+				item.className = ''
+			})
+			setTimeout(`$a.forEach(function(item,  index) {
+				item.className = 'animated bounce'
+			})`)
+		}, 3000)
+	</script>
+</body>
+</html>

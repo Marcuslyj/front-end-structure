@@ -1,0 +1,617 @@
+<!--
+localStorage.user='zhangling'
+刷新重置野狗数据
+ -->
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta>
+	<title>读书分享</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="Zhang Ling,html,css,js,node,前端,后端,数据库">
+	<meta name="description" content="Zhang Ling's site">
+	<meta name="author" content="Zhang Ling">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="x5-fullscreen" content="true">
+	<link rel="shortcut icon" href="img/favicon.ico">
+
+	<link rel="stylesheet" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css">
+	<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+
+ 	<!-- Demo styles -->
+    <style>
+	    html, body {
+	        position: relative;
+	        height: 100%;
+            overflow: hidden;
+        }
+        body {
+	        background: #eee;
+	        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	        font-size: 14px;
+	        color:#000;
+	        margin: 0;
+	        padding: 0;
+	    }
+	    .swiper-container {
+	        width: 100%;
+	        height: 100%;
+	    }
+	    .swiper-slide {
+	        text-align: center;
+	        font-size: 18px;
+	        background: #fff;
+	        /* Center slide text vertically */
+	        display: -webkit-box;
+	        display: -ms-flexbox;
+	        display: -webkit-flex;
+	        display: flex;
+	        -webkit-box-pack: center;
+	        -ms-flex-pack: center;
+	        -webkit-justify-content: center;
+	        justify-content: center;
+	        -webkit-box-align: center;
+	        -ms-flex-align: center;
+	        -webkit-align-items: center;
+	        align-items: center;
+	    }
+	    .swiper-button-next, .swiper-button-prev {
+	    	opacity: 0 !important;
+	    	padding: 100px;
+	    	margin-top: -122px;
+	    }
+	    .swiper-button-next:hover, .swiper-button-prev:hover {
+	    	opacity: 1 !important;
+	    }
+	    .swiper-pagination {
+	    	bottom: auto !important;
+	    	top: 10px;
+	    }
+	    .swiper-pagination-bullet {
+		    width: 16px;
+			height: 4px;
+			border-radius: 4px;
+	    }
+	    .swiper-pagination-bullet {
+	    	background: #000;
+	    }
+
+	    /*mask*/
+	    #mask {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 100%;
+	    	z-index: 10;
+	    }
+
+	    /*barrage*/
+	    #barrage {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 136px;
+	    	top: 40px;
+	    	z-index: 11;
+	    	white-space: nowrap;
+	    }
+	    #barrage span {
+	    	position: absolute;
+	    	left: 100%;
+	    	transition: left linear 6s;
+	    	-webkit-transition: left linear 6s;
+	    	white-space: nowrap;
+	    }
+	    #barrage span.slideLeft {
+	    	left: 0;
+	    	transform: translateX(-100%);
+	    	-webkit-transform: translateX(-100%);
+	    }
+	    #sendBarrage {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 46px;
+	    	bottom: 0;
+	    	z-index: 11;
+	    	background: #eee;
+	    	text-align: right;
+	    	white-space: nowrap;
+	    }
+	    #sendBarrage input {
+			background: #fff;
+			border: none;
+			height: 20px;
+			padding: 5px 10px;
+			box-sizing: content-box;
+			border-radius: 15px;
+			margin-top: 8px;
+	    }
+	    #sendBarrage input:focus {
+	    	outline: none;
+	    }
+	    #sendBarrage #submit {
+	    	width: 40px;
+	    	margin-right: 5px;
+	    	background: #00bcd4;
+	    	color: #fff;
+	    }
+	    #context {
+	    	width: 160px;
+	    }
+	    #nickName {
+	    	width: 80px;
+	    }
+
+        /*audio*/
+        .audios {
+            position: fixed;
+            z-index: 9;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            opacity: 0;
+        }
+        .audios:hover {
+            opacity: 1;
+        }
+        .audios span.pre {
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            padding: 6px 10px;
+            background: #eee;
+            color: #fff;
+            margin: 0 20px;
+        }
+        .audios span.next {
+            position: fixed;
+            left: 30px;
+            top: 0;
+            display: inline-block;
+            padding: 6px 10px;
+            background: #eee;
+            color: #fff;
+            margin: 0 20px;
+        }
+    </style>
+
+    <!-- slide -->
+    <style>
+        .slide1 {
+            font-size: 200px;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0,0,0,.6);
+        }
+        .slide2 {
+            position: relative;
+            font-size: 30px;
+        }
+        .slide2 span {
+            white-space: nowrap;
+            position: absolute;
+            color: #333;
+        }
+        .slide2 #zhetian {
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .slide3>div {
+            text-align: left;
+            white-space: nowrap;
+        }
+        .slide3 h2 {
+            font-size: 30px;
+            color: #333;
+        }
+        .slide3 p {
+            text-indent: 2em;
+            font-size: 20px;
+            color: #333;
+        }
+        .slide3 img.jiulonglaguan {
+            margin-top: 10%;
+            margin-left: 100px;
+            width: 400px;
+            float: right;
+        }
+        .slide4 img {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+        }
+        .slide4>div {
+            text-align: left;
+            padding: 0 40px;
+            line-height: 2;
+        }
+        .slide4 h2 {
+            font-size: 40px;
+        }
+        .slide4 p {
+            text-indent: 2em;
+        }
+        .slide4 .imgBox {
+            float: right;
+            position: relative;
+        }
+        .imgBox span {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: red;
+            transform: rotate(45deg);
+            font-size: 30px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .slide4 img {
+            width: 200px;
+        }
+
+        .slide5>div {
+            text-align: left
+        }
+
+        .slide6>div {
+            width: 80%;
+        }
+        .slide6 h2 {
+            width: 50%;
+            position: relative;
+        }
+        .slide6 .imgBox img {
+            width: 25%;
+            vertical-align: middle;
+            margin: 20px;
+        }
+
+        .slide6 h2, .slide7 h2 {
+            font-size: 80px;
+        }
+        .slide7 {
+            background: #eee;
+        }
+
+        .slide8, .slide9, .slide10, .slide11 {
+            background: #333;
+            color: #fff;
+            font-size: 80px;
+        }
+        .slide12 img {
+            max-width: 600px;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+	<!-- 遮罩 -->
+	<div id="mask"></div>
+	<!-- 弹幕 -->
+	<div id="barrage"></div>
+	<form id="sendBarrage">
+		<input type="text" placeholder="昵称（选填）" id="nickName">
+		<input type="text" placeholder="说点什么吧~" id="context">
+		<input type="submit" id="submit" value="吐槽">
+	</form>
+
+    <!-- 声音 -->
+    <div class="audios">
+        <audio controls="controls" preload="preload" loop="loop" src="./audios/1.mp3" >
+            您的浏览器不支持audio！
+        </audio>
+        <span class="pre">&lt;</span>
+        <span class="next">&gt;</span>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1">?</div>
+            <div class="swiper-slide slide2">
+                <span style="top: 5%; left: 20%;">完美世界</span>
+                <span style="top: 10%; left: 40%;">圣墟</span>
+                <span style="top: 15%; left: 5%;">神墓</span>
+                <span style="top: 20%; left: 20%;">不死不灭</span>
+                <span style="top: 25%; left: 45%;">斗罗大陆</span>
+                <span style="top: 30%; left: 35%;">酒神</span>
+                <span style="top: 35%; left: 50%;">天珠变</span>
+                <span style="top: 40%; left: 20%;">绝世唐门</span>
+                <span style="bottom: 38%; left: 5%;">神印王座</span>
+                <span style="bottom: 30%; left: 20%;">光之子</span>
+                <span style="bottom: 35%; left: 35%;">仙逆</span>
+                <span style="bottom: 45%; left: 20%;">求魔</span>
+                <span style="bottom: 25%; left: 45%;">将夜</span>
+                <span style="bottom: 100px; left: 10%;">一念永恒</span>
+                <span style="bottom: 40%; left: 25%;">我欲封天</span>
+                <span style="bottom: 50%; left: 40%;">莽荒纪</span>
+                <span style="bottom: 40%; left: 45%;">盗墓笔记</span>
+                <span style="bottom: 20%; left: 30%;">凡人修仙传</span>
+                <span style="bottom: 100px; left: 50%;">斗破苍穹</span>
+                <span style="top: 5%; right: 25%;">傲世九重天</span>
+                <span style="top: 10%; right: 20%;">诛仙</span>
+                <span style="top: 15%; right: 30%;">雪鹰领主</span>
+                <span style="top: 20%; right: 5%;">星峰传说</span>
+                <span style="top: 25%; right: 25%;">星辰变</span>
+                <span style="top: 30%; right: 15%;">盘龙</span>
+                <span style="top: 35%; right: 20%;">九鼎记</span>
+                <span style="top: 40%; right: 35%;">龙族</span>
+                <span style="top: 45%; right: 20%;">幻城</span>
+                <span style="top: 50%; right: 10%;">永生</span>
+                <span style="bottom: 50%; right: 40%;">长生界</span>
+                <span style="bottom: 45%; right: 25%;">黄金瞳</span>
+                <span style="bottom: 40%; right: 10%;">校花的贴身高手</span>
+                <span style="bottom: 35%; right: 30%;">武动乾坤</span>
+                <span style="bottom: 30%; right: 15%;">异世邪君</span>
+                <span style="bottom: 25%; right: 5%;">天才相师</span>
+                <span style="bottom: 20%; right: 30%;">凌天传说</span>
+                <span style="bottom: 100px; right: 20%;">奥术神座</span>
+            </div>
+            <div class="swiper-slide slide3">
+                <div>
+                    <img class="jiulonglaguan" src="./img/jiulonglaguan.jpg" alt="">
+                    <div style="float: left;">
+                        <img src="./img/zhetian.png" alt="">
+                        <h2>故事梗概：</h2>
+                        <p>引子：九龙拉棺</p>
+                        <p>背景：当代 -> 洪荒</p>
+                        <p>元素：上古神话 佛道宗教文化</p>
+                        <p>目标：成仙（长生）</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide4">
+                <div>
+                    <div class="imgBox">
+                        <img src="./img/chendong.jpg" alt="">
+                        <span>坑神</span>
+                    </div>
+                    <h2>辰东</h2>
+                    <p>辰东，原名杨振东，北京人</p>
+                    <p>起点中文网白金作家，中国作协成员</p>
+                    <p>崛起于网络文学青铜时代，是当前网络小说界最具影响力和代表性的写手之一</p>
+                    <p>代表作有 《圣墟》，《完美世界》，《遮天》，《长生界》，《神墓》，《不死不灭》</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide5">
+                <div>
+                    <p>目标：成仙</p>
+                    <p>方式：坚持</p>
+                    <p>
+                        人物：圣体叶凡 无良道士段德
+                    </p>
+                    <img src="./img/yefan.jpg" alt="">
+                    <img src="./img/duande.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide slide6">
+                <div class="between-center">
+                    <h2><span>情</span></h2>
+                    <div class="imgBox">
+                        <p>
+                            <img src="./img/yefan1.jpg" alt="">
+                            <img src="./img/henren.jpg" alt="">
+                        </p>
+                        <p>
+                            <img src="./img/duadeheigou.jpg" alt="">
+                            <img style="opacity: 0;" src="./img/henren2.jpg" alt="">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide6 slide7">
+                <div class="between-center">
+                    <h2><span>憾</span></h2>
+                    <div class="imgBox">
+                        <p>
+                            <img src="./img/qinyao.jpg" alt="">
+                            <img src="./img/anmiaoyi.jpg" alt="">
+                        </p>
+                        <p>
+                            <img src="./img/henren2.jpg" alt="">
+                            <img src="./img/huayunfei.jpg" alt="">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide8">挣 扎</div>
+            <div class="swiper-slide slide9">苍 生</div>
+            <div class="swiper-slide slide10">岁月 + 版图 = 格局</div>
+            <div class="swiper-slide slide11">一本小说，一个人生</div>
+            <div class="swiper-slide slide12">
+            	<div>
+	            	<img src="./img/qrPay.png" alt="">
+	            	<p>好人一生平安~</p>
+            	</div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+	<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <!-- Swiper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+
+	<script src = "https://cdn.wilddog.com/sdk/js/2.5.8/wilddog.js"></script>
+
+    <script>
+    $(function() {
+    	var o = {
+    		init: function() {
+    			var self = this;
+
+    			this.isMask();
+                this.autoPlay();
+    			this.initWilddog();
+    			this.initSwiper();
+    			this.initBarrage();
+    		},
+
+            // if mask
+            isMask: function() {
+                if (localStorage.user == 'zhangling')
+                    $('#mask').remove()
+            },
+
+            // audio play
+            autoPlay: function() {
+                $('.audios span').click(function() {
+                    var index = parseInt($('audio')[0].src.replace(/.+\/(\d)\..+/g, '$1'))
+                    var num = $(this)[0].className == 'next' ? 1 : -1
+                    $('audio')[0].src = './audios/' + (index + num) + '.mp3'
+                    $('audio')[0].play()
+                })
+
+                document.onkeydown=function(event){
+                    if (localStorage.user == 'zhangling') {
+                        var index = parseInt($('audio')[0].src.replace(/.+\/(\d)\..+/g, '$1'))
+
+                        var e = event || window.event || arguments.callee.caller.arguments[0];
+                        if(e && e.keyCode==38){ // 按 上
+                            $('audio')[0].src = './audios/' + (index + 1) + '.mp3'
+                        }
+                        if(e && e.keyCode==40){ // 按 下
+                            $('audio')[0].src = './audios/' + (index - 1) + '.mp3'
+                        }
+                        $('audio')[0].play()
+                    }
+                };
+            },
+
+    		// Initialize Swiper
+    		initSwiper: function() {
+				self.swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        nextButton: '.swiper-button-next',
+			        prevButton: '.swiper-button-prev',
+                    effect: 'flip',
+                    keyboardControl: localStorage.user == 'zhangling',
+                    loop: true,
+			        onInit: function(swiper) {
+			        	if (localStorage.user == 'zhangling') {
+				        	self.ref.set({
+								"page": swiper.activeIndex
+							});
+						}
+			        },
+			        onSlideChangeStart: function(swiper) {
+			        	if (localStorage.user == 'zhangling') {
+				        	self.ref.set({
+								"page": swiper.activeIndex
+							});
+
+                            console.log(swiper.activeIndex)
+
+                            if (swiper.activeIndex == 3) {
+                                $('audio')[0].src = './audios/3.mp3'
+                            }
+                            else if (swiper.activeIndex == 6) {
+                                $('audio')[0].src = './audios/6.mp3'
+                            }
+                            else if (swiper.activeIndex == 7) {
+                                $('audio')[0].src = './audios/7.mp3'
+                            }
+
+                            else if (swiper.activeIndex == 4 || swiper.activeIndex == 8) {
+                                $('audio')[0].src = './audios/1.mp3'
+                            }
+
+                            $('audio')[0].play()
+				        }
+			        }
+			    });
+    		},
+
+    		// Initialize Wilddog
+    		initWilddog: function() {
+    			var config = {
+				  	syncURL: "https://zhanglingfe.wilddogio.com"
+				}
+
+				wilddog.initializeApp(config);
+
+				self.ref = wilddog.sync().ref();
+
+				// snapshot 里面的数据会一直和云端保持同步
+				self.ref.on("value", function(snapshot) {
+					self.swiper && self.swiper.slideTo(snapshot.val().page);
+				});
+    		},
+
+    		// Initialize Barrage
+    		initBarrage: function() {
+    			self.ref.on('child_added', function(data) {
+    				if (data.val() && data.val() != 1) {
+    					var el = document.createElement('span');
+    					el.innerHTML = data.val().nickName + (data.val().nickName ? '：' : '') + data.val().context;
+
+    					el.style.color = data.val().style.color;
+    					el.style.fontSize =data.val().style.fontSize;
+    					el.style.top = data.val().style.top;
+    					$(el).appendTo('#barrage');
+
+    					setTimeout(function() {
+    						$(el).addClass('slideLeft')
+    					}, 500);
+
+    					setTimeout(function() {
+    						$(el).remove()
+    					}, 6500);
+    				}
+				});
+
+    			var send = false;
+
+    			$('form').on('submit', function(e) {
+    				e.preventDefault();
+
+    				if (!$('#context').val()) {
+    					alert('请输入内容');
+    					return;
+    				}
+    				if ($('#nickName').val()) {
+    					localStorage.nickName = $('#nickName').val()
+    					$('#nickName').remove()
+    					$('<span>' + localStorage.nickName + '：</span>').prependTo('form')
+    				}
+
+    				if (!send) {
+	    				self.ref.push({
+	    					nickName: $('#nickName').length ? $('#nickName').val() : localStorage.nickName,
+							context: $('#context').val(),
+							style: {
+								color: ['#f44336', '#9c27b0', '#3f51b5', '#03a9f4', '#00bcd4', '#009688', '#8bc34a', '#ffc107', '#ff9800', '#795548', '#9e9e9e', '#000'][parseInt(Math.random() * 12)],
+    							fontSize: ['12px', '14px', '16px', '18px', '20px', '22px', '24px', '26px', '28px', '30px'][parseInt(Math.random() * 10)],
+    							top: ['0px', '20px', '40px', '60px', '80px', '100px'][parseInt(Math.random() * 6)]
+							}
+						});
+						setTimeout(function() {
+							$('form')[0].reset()
+							send = false
+						}, 500)
+    				}
+    				send = true
+    			})
+    		}
+    	};
+
+    	o.init();
+    });
+    </script>
+</body>
+</html>
