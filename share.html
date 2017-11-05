@@ -1,0 +1,430 @@
+<!--
+localStorage.user='zhangling'
+刷新重置野狗数据
+ -->
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta>
+	<title>前端新员工培训</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="Zhang Ling,html,css,js,node,前端,后端,数据库">
+	<meta name="description" content="Zhang Ling's site">
+	<meta name="author" content="Zhang Ling">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="x5-fullscreen" content="true">
+	<link rel="shortcut icon" href="img/favicon.ico">
+
+	<link rel="stylesheet" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css">
+	<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css">
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+
+ 	<!-- Demo styles -->
+    <style>
+	    html, body {
+	        position: relative;
+	        height: 100%;
+            overflow: hidden;
+        }
+        body {
+	        background: #eee;
+	        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	        font-size: 14px;
+	        color:#000;
+	        margin: 0;
+	        padding: 0;
+	    }
+	    .swiper-container {
+	        width: 100%;
+	        height: 100%;
+	    }
+	    .swiper-slide {
+	        text-align: center;
+	        font-size: 18px;
+	        background: #fff;
+	    }
+        .center {
+            /* Center slide text vertically */
+	        display: -webkit-box;
+	        display: -ms-flexbox;
+	        display: -webkit-flex;
+	        display: flex;
+	        -webkit-box-pack: center;
+	        -ms-flex-pack: center;
+	        -webkit-justify-content: center;
+	        justify-content: center;
+	        -webkit-box-align: center;
+	        -ms-flex-align: center;
+	        -webkit-align-items: center;
+	        align-items: center;
+        }
+	    .swiper-button-next, .swiper-button-prev {
+	    	opacity: 0 !important;
+	    	padding: 100px;
+	    	margin-top: -122px;
+	    }
+	    .swiper-button-next:hover, .swiper-button-prev:hover {
+	    	opacity: 1 !important;
+	    }
+	    .swiper-pagination {
+	    	bottom: auto !important;
+	    	top: 10px;
+	    }
+	    .swiper-pagination-bullet {
+		    width: 16px;
+			height: 4px;
+			border-radius: 4px;
+	    }
+	    .swiper-pagination-bullet {
+	    	background: #000;
+	    }
+
+	    /*mask*/
+	    #mask {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 100%;
+	    	z-index: 10;
+	    }
+
+	    /*barrage*/
+	    #barrage {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 136px;
+	    	top: 40px;
+	    	z-index: 11;
+	    	white-space: nowrap;
+	    }
+	    #barrage span {
+	    	position: absolute;
+	    	left: 100%;
+	    	transition: left linear 6s;
+	    	-webkit-transition: left linear 6s;
+	    	white-space: nowrap;
+	    }
+	    #barrage span.slideLeft {
+	    	left: 0;
+	    	transform: translateX(-100%);
+	    	-webkit-transform: translateX(-100%);
+	    }
+	    #sendBarrage {
+	    	position: fixed;
+	    	width: 100%;
+	    	height: 46px;
+	    	bottom: 0;
+	    	z-index: 11;
+	    	background: #eee;
+	    	text-align: right;
+	    	white-space: nowrap;
+	    }
+	    #sendBarrage input {
+			background: #fff;
+			border: none;
+			height: 20px;
+			padding: 5px 10px;
+			box-sizing: content-box;
+			border-radius: 15px;
+			margin-top: 8px;
+	    }
+	    #sendBarrage input:focus {
+	    	outline: none;
+	    }
+	    #sendBarrage #submit {
+	    	width: 40px;
+	    	margin-right: 5px;
+	    	background: #00bcd4;
+	    	color: #fff;
+	    }
+	    #context {
+	    	width: 160px;
+	    }
+	    #nickName {
+	    	width: 80px;
+	    }
+
+        /*audio*/
+        .audios {
+            position: fixed;
+            z-index: 9;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            opacity: 0;
+        }
+        .audios:hover {
+            opacity: 1;
+        }
+        .audios span.pre {
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            padding: 6px 10px;
+            background: #eee;
+            color: #fff;
+            margin: 0 20px;
+        }
+        .audios span.next {
+            position: fixed;
+            left: 30px;
+            top: 0;
+            display: inline-block;
+            padding: 6px 10px;
+            background: #eee;
+            color: #fff;
+            margin: 0 20px;
+        }
+    </style>
+
+    <!-- slide -->
+    <style>
+        .slide1 {
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            color: #fff;
+            background: rgba(0,0,0,.6);
+        }
+        .slide2, .slide3, .slide4, .slide5, .slide6, .slide7, .slide8 {
+            font-size: 30px;
+        }
+        .slide5 img {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+	<!-- 遮罩 -->
+	<div id="mask"></div>
+	<!-- 弹幕 -->
+	<div id="barrage"></div>
+	<form id="sendBarrage">
+		<input type="text" placeholder="昵称（选填）" id="nickName">
+		<input type="text" placeholder="此处输入内容" id="context">
+		<input type="submit" id="submit" value="发送">
+	</form>
+
+    <!-- 声音 -->
+    <div class="audios">
+        <audio controls="controls" preload="preload" loop="loop" src="../static/audios/1.mp3" >
+            您的浏览器不支持audio！
+        </audio>
+        <span class="pre">&lt;</span>
+        <span class="next">&gt;</span>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1 center">
+                <h1>前端新员工培训</h1>
+            </div>
+            <div class="swiper-slide slide2 center">
+                <h1>什么是前端？</h1>
+            </div>
+            <div class="swiper-slide slide3 center">
+                <h1>前端行业现状</h1>
+            </div>
+            <div class="swiper-slide slide4 center">
+                <h1>前端发展历程</h1>
+            </div>
+            <div class="swiper-slide slide5">
+                <h1>欣和前端架构总览</h1>
+                <img class="shinhofe" src="../static/img/shinhofe.jpg" alt="">
+            </div>
+            <div class="swiper-slide slide6 center">
+                <h1>培训与文化建设</h1>
+            </div>
+            <div class="swiper-slide slide7 center">
+                <h1>持续学习</h1>
+            </div>
+            <div class="swiper-slide slide8 center">
+                <h1>Thank you for listening!</h1>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+	<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <!-- Swiper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+
+	<script src = "https://cdn.wilddog.com/sdk/js/2.5.8/wilddog.js"></script>
+
+    <script>
+    $(function() {
+    	var o = {
+    		init: function() {
+    			var self = this;
+
+    			this.isMask();
+                // this.autoPlay();
+    			this.initWilddog();
+    			this.initSwiper();
+    			this.initBarrage();
+    		},
+
+            // if mask
+            isMask: function() {
+                if (localStorage.user == 'zhangling')
+                    $('#mask').remove()
+            },
+
+            // audio play
+            autoPlay: function() {
+                $('.audios span').click(function() {
+                    var index = parseInt($('audio')[0].src.replace(/.+\/(\d)\..+/g, '$1'))
+                    var num = $(this)[0].className == 'next' ? 1 : -1
+                    $('audio')[0].src = './audios/' + (index + num) + '.mp3'
+                    $('audio')[0].play()
+                })
+
+                document.onkeydown=function(event){
+                    if (localStorage.user == 'zhangling') {
+                        var index = parseInt($('audio')[0].src.replace(/.+\/(\d)\..+/g, '$1'))
+
+                        var e = event || window.event || arguments.callee.caller.arguments[0];
+                        if(e && e.keyCode==38){ // 按 上
+                            $('audio')[0].src = './audios/' + (index + 1) + '.mp3'
+                        }
+                        if(e && e.keyCode==40){ // 按 下
+                            $('audio')[0].src = './audios/' + (index - 1) + '.mp3'
+                        }
+                        $('audio')[0].play()
+                    }
+                };
+            },
+
+    		// Initialize Swiper
+    		initSwiper: function() {
+				self.swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        nextButton: '.swiper-button-next',
+			        prevButton: '.swiper-button-prev',
+                    effect: 'flip',
+                    keyboardControl: localStorage.user == 'zhangling',
+                    loop: true,
+			        onInit: function(swiper) {
+			        	if (localStorage.user == 'zhangling') {
+				        	self.ref.set({
+								"page": swiper.activeIndex
+							});
+						}
+			        },
+			        onSlideChangeStart: function(swiper) {
+			        	if (localStorage.user == 'zhangling') {
+				        	self.ref.set({
+								"page": swiper.activeIndex
+							});
+
+                            console.log(swiper.activeIndex)
+
+                            // if (swiper.activeIndex == 3) {
+                            //     $('audio')[0].src = './audios/3.mp3'
+                            // }
+                            // else if (swiper.activeIndex == 6) {
+                            //     $('audio')[0].src = './audios/6.mp3'
+                            // }
+                            // else if (swiper.activeIndex == 7) {
+                            //     $('audio')[0].src = './audios/7.mp3'
+                            // }
+
+                            // else if (swiper.activeIndex == 4 || swiper.activeIndex == 8) {
+                            //     $('audio')[0].src = './audios/1.mp3'
+                            // }
+
+                            $('audio')[0].play()
+				        }
+			        }
+			    });
+    		},
+
+    		// Initialize Wilddog
+    		initWilddog: function() {
+    			var config = {
+				  	syncURL: "https://zhanglingfe.wilddogio.com"
+				}
+
+				wilddog.initializeApp(config);
+
+				self.ref = wilddog.sync().ref();
+
+				// snapshot 里面的数据会一直和云端保持同步
+				self.ref.on("value", function(snapshot) {
+					self.swiper && self.swiper.slideTo(snapshot.val().page);
+				});
+    		},
+
+    		// Initialize Barrage
+    		initBarrage: function() {
+    			self.ref.on('child_added', function(data) {
+    				if (data.val() && data.val() != 1) {
+    					var el = document.createElement('span');
+    					el.innerHTML = data.val().nickName + (data.val().nickName ? '：' : '') + data.val().context;
+
+    					if (el.style) el.style.color = data.val().style.color;
+    					el.style.fontSize =data.val().style.fontSize;
+    					el.style.top = data.val().style.top;
+    					$(el).appendTo('#barrage');
+
+    					setTimeout(function() {
+    						$(el).addClass('slideLeft')
+    					}, 500);
+
+    					setTimeout(function() {
+    						$(el).remove()
+    					}, 6500);
+    				}
+				});
+
+    			var send = false;
+
+    			$('form').on('submit', function(e) {
+    				e.preventDefault();
+
+    				if (!$('#context').val()) {
+    					alert('请输入内容');
+    					return;
+    				}
+    				if ($('#nickName').val()) {
+    					localStorage.nickName = $('#nickName').val()
+    					$('#nickName').remove()
+    					$('<span>' + localStorage.nickName + '：</span>').prependTo('form')
+    				}
+
+    				if (!send) {
+	    				self.ref.push({
+	    					nickName: $('#nickName').length ? $('#nickName').val() : localStorage.nickName,
+							context: $('#context').val(),
+							style: {
+								color: ['#f44336', '#9c27b0', '#3f51b5', '#03a9f4', '#00bcd4', '#009688', '#8bc34a', '#ffc107', '#ff9800', '#795548', '#9e9e9e', '#000'][parseInt(Math.random() * 12)],
+    							fontSize: ['12px', '14px', '16px', '18px', '20px', '22px', '24px', '26px', '28px', '30px'][parseInt(Math.random() * 10)],
+    							top: ['0px', '20px', '40px', '60px', '80px', '100px'][parseInt(Math.random() * 6)]
+							}
+						});
+						setTimeout(function() {
+							$('form')[0].reset()
+							send = false
+						}, 500)
+    				}
+    				send = true
+    			})
+    		}
+    	};
+
+    	o.init();
+    });
+    </script>
+</body>
+</html>
