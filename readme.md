@@ -1,9 +1,8 @@
-### 个人主页: [http://www.zhangling.site](http://www.zhangling.site)
+## [Web 开发笔记](docs)
 
-### [Web 开发笔记](docs)
-[简书文集](https://www.jianshu.com/u/539a1124c845)同步整理。
+[简书文集](https://www.jianshu.com/u/539a1124c845)同步整理
 
-> 前端
+## 前端
 
 - 语言：[_`HTML(5)`_](html)    [_`CSS(3)`_](css)   [_`JavaScript`_](js)    [_`ECMAScript6`_](es6)
 
@@ -17,7 +16,7 @@
 
 - [_`Interview Questions`_](interviewQ.md)
 
-> 后端
+## 后端
 
 - 语言：[_`Node`_](node)   [_`PHP`_](php)  [_`Java`_](java)    [_`Python`_](python)
 
@@ -27,12 +26,12 @@
 
 - [_`HTTP`_](http)
 
-> 原生
+## 原生
 
 - [_`IOS`_](ios)  [_`Android`_](Android)
 - h5 to native：[_`React-Native`_](reactNative) [_`Weex`_](weex)
 
-> 机器学习
+## 机器学习
 
 - [_`TensorFlow`_](tensorflow)
 
