@@ -1,6 +1,6 @@
 ## [Web 开发笔记](docs)
 
-[简书文集](https://www.jianshu.com/u/539a1124c845)同步整理
+[掘金](https://juejin.im/user/59e6e9acf265da43111f4c21/collections?type=created)同步整理
 
 ## 前端
 
