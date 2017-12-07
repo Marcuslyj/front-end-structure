@@ -5,7 +5,7 @@
 ## ES6(EcmaScript 2015)
 
 ## ES7(EcmaScript 2016)
-- [Array.prototype.includes](es7/Array.prototype.includes)
+- [Array.prototype.includes](es7/Array.prototype.includes.md)
 - [Exponentiation Operator(求幂运算)]()
 
 ## ES8(EcmaScript 2017)
