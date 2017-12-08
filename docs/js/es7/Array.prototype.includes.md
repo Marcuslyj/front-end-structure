@@ -19,7 +19,8 @@ if (arr.indexOf('vue') !== -1) {
     console.log('Vue is exist')
 }
 ```
-或者使用`~`使代码更紧凑些。`~a = -(a + 1)`
+
+或者使用`~`使代码更紧凑些。`~a = -(a + 1)`
 
 ```js
 let arr = ['react', 'angular', 'vue']
