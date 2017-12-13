@@ -1,8 +1,39 @@
 # Array.prototype.includes
 
-`ES7` 新增 `Array.prototype.includes` ，来检查数组中是否存在某个值。它返回一个布尔值，是`indexOf`的替代。
+`ES7` 新增 `Array.prototype.includes` ，来判断某元素在数组中是否存在。它返回一个布尔值，是`indexOf`的替代。
 
-### 验证数组中是否存在某元素
+### 用法
+
+`Array.includes(element[, fromIndex])` => `Boolean`
+
+| 参数 | 类型 | 解释 |
+| --------   | ----- | ---- |
+| Array | `Array` | 数组 |
+| element | `String`/`NaN`/`Number`... | 某元素 |
+| fromIndex | `Number` | 查询的起始位置【可选】 |
+
+其结果为布尔值，相比于`indexOf`省去了结果的类型转换，更加直观简单：
+
+```js
+let arr = ['react', 'angular', 'vue']
+
+if (arr.includes('vue')) {
+    console.log('Vue is exist')
+}
+```
+
+`includes` 也可以在 `NaN` (非数字)使用:
+
+```js
+[1, 2, NaN].includes(NaN) // true
+```
+
+`includes` 第二可选参数 `fromIndex`，允许从特定位置开始寻找匹配，提高了性能。
+```js
+['a', 'b', 'c'].includes('a', 1) // false
+```
+
+### ES7前的方法
 
 - 使用 `indexOf`
 
@@ -28,29 +59,6 @@ let arr = ['react', 'angular', 'vue']
 if (~arr.indexOf('vue')) {
     console.log('Vue is exist')
 }
-```
-
-- 使用 `includes` 
-
-用`Array.includes(element[, fromIndex])`返回一个布尔值，来判断某元素在数组中是否存在，相比于`indexOf`省去了结果的类型转换，更加直观简单：
-
-```js
-let arr = ['react', 'angular', 'vue']
-
-if (arr.includes('vue')) {
-    console.log('Vue is exist')
-}
-```
-
-`includes` 也可以在 `NaN` (非数字)使用:
-
-```js
-[1, 2, NaN].includes(NaN) // true
-```
-
-`includes` 第二可选参数 `fromIndex`，允许从特定位置开始寻找匹配，提高了性能。
-```js
-['a', 'b', 'c'].includes('a', 1) // false
 ```
 
 - 使用 `JavaScript` 库
