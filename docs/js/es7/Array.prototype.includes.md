@@ -33,7 +33,7 @@ if (arr.includes('vue')) {
 ['a', 'b', 'c'].includes('a', 1) // false
 ```
 
-### ES7前的方法
+### `ES7` 前的方法
 
 - 使用 `indexOf`
 
