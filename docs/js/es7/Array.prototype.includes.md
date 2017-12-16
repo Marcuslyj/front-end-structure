@@ -33,7 +33,7 @@ if (arr.includes('vue')) {
 ['a', 'b', 'c'].includes('a', 1) // false
 ```
 
-### `ES7` 前的方法
+### `ES7 includes` 发布前的方法
 
 - 使用 `indexOf`
 
@@ -62,8 +62,6 @@ if (~arr.indexOf('vue')) {
 ```
 
 - 使用 `JavaScript` 库
-
-在 `ES7 includes`发布之前，许多 `JavaScript` 库已经实现了类似功能
 
 jQuery: [$.inArray](http://api.jquery.com/jquery.inarray/)
 
