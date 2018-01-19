@@ -1,4 +1,4 @@
-# 架构师知识图谱
+# 架构师知识图谱
 
 ## 基础
 
@@ -33,7 +33,7 @@
 - 框架
     - DOM操作
         - jQuery
-        - Zepto
+        - Zepto
         - some template...
     - 数据驱动
         - [_`Vue`_](vue)
