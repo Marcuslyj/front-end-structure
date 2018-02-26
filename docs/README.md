@@ -13,11 +13,16 @@
 - [_`HTML(5)`_](html)
 - [_`CSS(3)`_](css)
 - [_`JavaScript`_](js)
-    - ECMA: [_`≤ECMAScript5`_](≤es5) [_`ECMAScript6`_](es6)
- [_`ECMAScript7`_](es7) [_`ECMAScript8`_](es8)
+    - ECMA
+        - [_`≤ECMAScript5`_](≤es5)
+        - [_`ECMAScript6`_](es6)
+        - [_`ECMAScript7`_](es7)
+        - [_`ECMAScript8`_](es8)
     - DOM
     - BOM
-    - frame: [_`jQuery`_](jquery) [_`Zepto`_](zepto)
+    - frame
+        - [_`jQuery`_](jquery)
+        - [_`Zepto`_](zepto)
 - [_`Node.js`_](node)
     - 基础模块
     - 框架
@@ -40,9 +45,10 @@
 > 组件
 
 > 终端
+
 - Browser
     - PC
-    - H5
+    - H5
 - Wechat
     - 公众号
     - 企业号
@@ -58,21 +64,25 @@
 - quick app(快应用)
 
 > 测试
+
 - 数据模拟（mock.js/server response json）
 - 单元测试
 - 集成测试
 
 > [_`Tools`_](tools)
+
 - 编辑器: sublime/vscode/atom/webstorm/hbuilder...
 - 版本管理：Git
 - release tool: node/npm/gulp/webpack/fis
 
 > 规范
+
 - 代码规范
 - 版本管理规范
 - 发布规范
 
 > 环境部署
+
 - 开发环境
     - windows、mac OS系统的使用
     - node、nginx
@@ -90,55 +100,14 @@
 
 ## 后端
 
-> 语言基础
-- [_`Node`_](node)
-- [_`Java`_](java)
-- [_`Python`_](python)
-- [_`PHP`_](php)
-- [_`C++`_](C++)
+- 语言：[_`Node`_](node)   [_`PHP`_](php)  [_`Java`_](java)    [_`Python`_](python)
 
-> 数据库
-- [_`MySQL`_](mysql)
-- [_`MongoDB`_](mongodb)
-- [_`Redis`_](redis)
+- 数据库：[_`MySQL`_](mysql)  [_`MongoDB`_](mongodb)  [_`Redis`_](redis)
 
-> 网络协议
+- 系统：[_`Lilux`_](lilux) [_`Shell`_](shell)
+
 - [_`HTTP`_](http)
-- HTTPS
-- WS
-
-> 环境部署
-- 操作系统：[_`Lilux`_](lilux) [_`Shell`_](shell)
-- 容器...
-
 
 ## AI
-> 数学基础
-- 数据分析
-- 概率论
-- 线性代数及矩阵
 
-> python
-- 环境搭建
-- 语言基础
-- 常用框架/库
-- 机器学习库
-
-> 机器学习
-- 机器学习概述
-- 数据清洗和特征选择
-- 回归算法
-- 决策树、随机森林和提升算法
-- SVM
-- 聚类算法
-- EM算法
-- 贝叶斯算法
-- 隐马尔科夫模型
-- LDA主题模型
-
-> 深度学习
-- 深度学习概述
-- BP神经基础
-- CNN卷积神经网络
-- RNN循环神经网络
 - [_`TensorFlow`_](tensorflow)

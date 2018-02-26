@@ -1,6 +1,5 @@
 # 后端架构师技术图谱
 
-- [基础](base)
 
 * [并发](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#并发)
 	* [多线程](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#多线程)
