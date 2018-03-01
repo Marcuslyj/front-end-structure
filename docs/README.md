@@ -13,16 +13,11 @@
 - [_`HTML(5)`_](html)
 - [_`CSS(3)`_](css)
 - [_`JavaScript`_](js)
-    - ECMA
-        - [_`≤ECMAScript5`_](≤es5)
-        - [_`ECMAScript6`_](es6)
-        - [_`ECMAScript7`_](es7)
-        - [_`ECMAScript8`_](es8)
+    - ECMA: [_`≤ECMAScript5`_](≤es5) [_`ECMAScript6`_](es6)
+ [_`ECMAScript7`_](es7) [_`ECMAScript8`_](es8)
     - DOM
     - BOM
-    - frame
-        - [_`jQuery`_](jquery)
-        - [_`Zepto`_](zepto)
+    - frame: [_`jQuery`_](jquery) [_`Zepto`_](zepto)
 - [_`Node.js`_](node)
     - 基础模块
     - 框架
@@ -45,10 +40,9 @@
 > 组件
 
 > 终端
-
 - Browser
     - PC
-    - H5
+    - H5
 - Wechat
     - 公众号
     - 企业号
@@ -64,25 +58,21 @@
 - quick app(快应用)
 
 > 测试
-
 - 数据模拟（mock.js/server response json）
 - 单元测试
 - 集成测试
 
 > [_`Tools`_](tools)
-
 - 编辑器: sublime/vscode/atom/webstorm/hbuilder...
 - 版本管理：Git
 - release tool: node/npm/gulp/webpack/fis
 
 > 规范
-
 - 代码规范
 - 版本管理规范
 - 发布规范
 
 > 环境部署
-
 - 开发环境
     - windows、mac OS系统的使用
     - node、nginx
