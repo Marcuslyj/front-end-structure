@@ -28,6 +28,10 @@
 方法唯一性
 变量唯一性
 
+todo注释
+
+stylus 不用冒号
+
 1.readme
 	目录结构
 	quickstart
@@ -46,7 +50,7 @@
 	用UI Components的项目 不要再自己写 除非无法满足需求
 	用公用css cover Components
 	页面的组件 在相应模块下创建components目录
-	
+
 7.编码规范：html css js vue stylus pug es6等 待更新
 8.变量 常量首字母大写
 
