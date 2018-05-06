@@ -2,7 +2,7 @@
 
 - [IntelliJ IDEA 教程](https://blog.csdn.net/qq_35246620/article/details/61191375)
 
-- [基础](base)
+- [基础](https://www.yiibai.com/java/package.html)
 
 * [并发](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#并发)
 	* [多线程](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#多线程)
