@@ -1,4 +1,5 @@
 # 架构师知识图谱
+架构的目标：安全性(Secure)；可升级性(Scalable)；可定制化(Customizable)；可扩展性(Extensible)；可维护性(Maintainable)
 
 ## 基础
 - [`数据结构`](core/data_structure)
