@@ -34,7 +34,7 @@ box-sizing:content-box border-box标准模式 怪异模式（ie5-6 未指定doct
 
 > CSS 样式优先级计算规则（权重）
 ```
-行内样式（1000） > 内联样式 > 外联样式
+行内样式（1000） > 内联样式 > 外联样式    
 !important > id (100) > class(10) > element/伪元素(1) > */>/+(0)
 ```
 
@@ -94,7 +94,7 @@ http://note.youdao.com/noteshare?id=c3673c483f52b9c939299a1bc1c3cb97
 ```
 浅复制：实际上是复制了内存地址 a=b
 深复制：
-    数组：slice（satrt, end）、concat（array1[, arrayn]）
+    数组：slice（satrt, end）、concat（array1[, arrayn]）  
     对象：对各属性递归调用浅复制
 ```
 
@@ -127,7 +127,7 @@ if (!function() {}.bind) {
             args = Array.prototype.slice.call(arguments);
 
         return function() {
-            return self.apply(context, args.slice(1));
+            return self.apply(context, args.slice(1));    
         }
     };
 }
