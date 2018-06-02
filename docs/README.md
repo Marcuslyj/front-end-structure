@@ -72,7 +72,7 @@
 - 版本管理：Git
 - release tool: node/npm/gulp/webpack/fis
 
-> 规范
+> [规范](https://lingzz.github.io/code-guide/)
 - 代码规范
 - 版本管理规范
 - 发布规范
