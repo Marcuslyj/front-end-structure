@@ -3,10 +3,10 @@
 <!-- # 架构师知识图谱 -->
 <!-- 架构的目标：安全性(Secure)；可升级性(Scalable)；可定制化(Customizable)；可扩展性(Extensible)；可维护性(Maintainable) -->
 
-## 推荐浏览
-[`编程核心知识图谱`](README_CORE.md)
-[`AI 知识图谱`](README_AI.md)
+传送🚪：
+[`编程核心知识图谱`](README_CORE.md)
 [`后端知识图谱`](README_BE.md)
+[`AI 知识图谱`](README_AI.md)
 
 ## 前端
 ### [网页布局](fe.layout)
