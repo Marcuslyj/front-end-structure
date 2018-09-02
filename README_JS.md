@@ -1,4 +1,9 @@
-# ES 6 (ECMAScript2015)
+# JavaScript 基础知识整理
+
+## [ECMA](ecma)
+### ES5(EcmaScript 2009)
+
+### [ES6(EcmaScript 2015)](ecma/es6)
 
 - [`ES6` 简介](http://es6.ruanyifeng.com/#docs/intro)
 - [let 和 const 命令](http://es6.ruanyifeng.com/#docs/let)
@@ -28,3 +33,33 @@
 - [ArrayBuffer](http://es6.ruanyifeng.com/#docs/arraybuffer)
 - [最新提案](http://es6.ruanyifeng.com/#docs/proposals)
 - [参考链接](http://es6.ruanyifeng.com/#docs/reference)
+
+### ES7(EcmaScript 2016)
+- [Array.prototype.includes](es7/Array.prototype.includes.md)
+- [Exponentiation Operator(求幂运算(a ** = b) = a ** b = Math.pow(a, b))]()
+
+### ES8(EcmaScript 2017)
+
+- [String padding(字符串填充 padStart / padEnd)]()
+- [Object.values / Object.entries]()
+- [Object.getOwnPropertyDescriptors返回对象所有自身属性描述]()
+- [Trailing commas(函数参数列表和调用中尾部的逗号)]()
+- [Async Functions(异步函数)]()
+- [共享内存和Atomics]()
+
+参考资料：[ES7 and ES8 特性](https://www.jianshu.com/p/a138a525c287)
+
+### DOM
+
+### BOM
+
+## Node.js
+
+## 框架
+
+- jQuery
+- Zepto
+    - [点透](点透)
+
+## JS 进阶
+ - [JavaScript 内存机制](https://juejin.im/post/5b10ba336fb9a01e66164346?utm_source=gold_browser_extension)
