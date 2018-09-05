@@ -33,7 +33,7 @@ PC 手机H5 Hibird APP mini-program node
 #### 上线发布
 - 发布方案制定
 - 发布脚本
-- 发布版本号、Git管理
+- 发布版本号、Git管理
 
 #### 线上监控
 - 错误监控报警

@@ -15,7 +15,7 @@
 - [构建、运行、生成 APK](https://developer.android.com/studio/run/)
 - [在模拟器上运行](https://developer.android.com/studio/run/managing-avds)
 - [在硬件设备上运行](https://developer.android.com/studio/run/oem-usb)
-- [从命令行构建](https://developer.android.com/studio/build/building-cmdline)
+- [从命令行构建](https://developer.android.com/studio/build/building-cmdline)
 
 5. [配置](https://developer.android.com/studio/profile/)
 
