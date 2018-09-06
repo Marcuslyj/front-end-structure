@@ -1,5 +1,9 @@
 # [Atlas of front-end knowledge structure](https://github.com/lingzz/front-end-structure)
-前端知识体系图谱
+
+结合自身技术知识体系，将互联网资源和个人博客归纳整理于此，成前端知识体系图谱。
+
+技术在不断发展和更新，本文档也将跟随时代的步伐，持续更新~
+
 <!-- # 架构师知识图谱 -->
 <!-- 架构的目标：安全性(Secure)；可升级性(Scalable)；可定制化(Customizable)；可扩展性(Extensible)；可维护性(Maintainable) -->
 
