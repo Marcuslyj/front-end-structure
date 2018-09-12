@@ -6,7 +6,7 @@
 
 ## 目录
 
-#### 大前端方向
+> 大前端方向
 
 - [前端知识图谱](README.md) 推荐指数：🦍🦍🦍
     - [JavaScript基础知识汇总](JS.md)
@@ -17,18 +17,18 @@
 
 > 后端方向
 
-- [`后端知识图谱`](BE.md) `doing`
-- [`Java知识图谱`](BE.md) `doing`
-- [`Node.js知识图谱`](node.md) `doing`
+- [后端知识图谱](BE.md) `doing`
+- [Java知识图谱](BE.md) `doing`
+- [Node.js知识图谱](node.md) `doing`
 
 > 着眼未来
 
-- [`AI 知识图谱`](AI.md) `doing`
+- [AI 知识图谱](AI.md) `doing`
 
 
 > 核心基础
 
-- [`编程核心知识图谱`](README_CORE.md)  `数据结构` `算法` `设计模式` `操作系统` `doing`
+- [编程核心知识图谱](README_CORE.md)  `数据结构` `算法` `设计模式` `操作系统` `doing`
 
 > 职业发展
 
