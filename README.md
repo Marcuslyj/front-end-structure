@@ -6,14 +6,14 @@
 
 ## 目录
 
-> 大前端方向
+#### 大前端方向
 
-- [`前端知识图谱`](README.md) 推荐指数：🦍🦍🦍
+- [前端知识图谱](README.md) 推荐指数：🦍🦍🦍
     - [JavaScript基础知识汇总](JS.md)
-- [`前端技术Leader知识图谱`](FE_leader.md) `提纲阶段`
-- [`Android知识图谱`](andr.md) `doing`
-- [`iOS知识图谱`](ios.md) `todo`
-- [`Node.js知识图谱`](node.md) `doing`
+- [前端技术Leader知识图谱](FE_leader.md) `提纲阶段`
+- [Android知识图谱](andr.md) `doing`
+- [iOS知识图谱](ios.md) `todo`
+- [Node.js知识图谱](node.md) `doing`
 
 > 后端方向
 
